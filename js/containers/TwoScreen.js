@@ -6,7 +6,8 @@ import {
     View,
     Image,
     TouchableHighlight,
-    TouchableOpacity
+    TouchableOpacity,
+    Platform
 } from 'react-native';
 
 import Timer from '../components/Timer/Timer';
@@ -78,7 +79,7 @@ class TwoScreen extends Component {
                     </View>
                     <Button style={styles.button} onPress={() => this.toggle()}>
                         <Image
-                            source={require('../../js/Images/menu.png')} style={{width: 128, height: 128}} />
+                            source={require('../../js/Images/menu.png')} style={{width: 52, height: 52}} />
                     </Button>
             </SideMenu>
         );
@@ -92,12 +93,19 @@ export default connect(state => ({
     })
 )(TwoScreen);
 const styles = StyleSheet.create({
-    bg:{
-        position: 'absolute',
-        top: 0,
-        left:0,
-        resizeMode: 'contain'
-    },
+  container: {
+      flex: 1,
+      justifyContent: 'center',
+      alignItems: 'center',
+      backgroundColor: '#F5FCFF',
+  },
+  bg:{
+      position: 'absolute',
+      top: (Platform.OS === 'ios') ? 20 : 0,
+      left:0,
+      flex: 1,
+      resizeMode: 'cover'
+  },
     row:{
         flexDirection: 'row'
     },
@@ -114,12 +122,6 @@ const styles = StyleSheet.create({
     },
     btText:{
 
-    },
-    container: {
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: '#F5FCFF',
     },
     button: {
         width: 52,

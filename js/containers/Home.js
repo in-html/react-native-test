@@ -8,7 +8,8 @@ import {
     Navigator,
     StatusBar,
     ScrollView,
-    TouchableOpacity
+    TouchableOpacity,
+    Platform
 } from 'react-native';
 import Timer from '../components/Timer/Timer';
 import SideMenu from 'react-native-side-menu';
@@ -76,7 +77,7 @@ class Home extends Component {
                     </View>
                     <Button style={styles.button} onPress={() => this.toggle()}>
                         <Image
-                            source={require('../../js/Images/menu.png')} style={{width: 128, height: 128}} />
+                            source={require('../../js/Images/menu.png')} style={{width: 52, height: 52}} />
                     </Button>
             </SideMenu>
         );
@@ -101,9 +102,10 @@ const styles = StyleSheet.create({
     },
     bg:{
         position: 'absolute',
-        top: 0,
+        top: (Platform.OS === 'ios') ? 20 : 0,
         left:0,
-        resizeMode: 'contain'
+        flex: 1,
+        resizeMode: 'cover'
     },
     button: {
         width: 52,
