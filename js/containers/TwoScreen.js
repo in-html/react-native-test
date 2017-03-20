@@ -79,7 +79,7 @@ class TwoScreen extends Component {
                     </View>
                     <Button style={styles.button} onPress={() => this.toggle()}>
                         <Image
-                            source={require('../../js/Images/menu.png')} style={{width: 52, height: 52}} />
+                            source={require('../../js/Images/menu.png')} style={styles.btImage} />
                     </Button>
             </SideMenu>
         );
@@ -129,6 +129,10 @@ const styles = StyleSheet.create({
         position: 'absolute',
         top: 20,
         padding: 10,
+    },
+    btImage:{
+      width: (Platform.OS === 'ios') ? 52 : 128,
+      height: (Platform.OS === 'ios') ? 52 : 128
     },
     caption: {
         fontSize: 20,
